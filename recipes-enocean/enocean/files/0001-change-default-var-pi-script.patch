@@ -1,0 +1,18 @@
+Index: EOLink/pi.sh
+===================================================================
+--- EOLink.orig/pi.sh
++++ EOLink/pi.sh
+@@ -1,10 +1,8 @@
+ #!/bin/bash
+-ARM_TOOLCHAIN_PATH=/opt/pitools/arm-bcm2708/arm-bcm2708hardfp-linux-gnueabi/bin/
++ARM_TOOLCHAIN_PATH=${PSEUDO_BINDIR}
+ ARM_TOOLCHAIN=arm-bcm2708hardfp-linux-gnueabi
+-ARM_CPPFLAGS=-Ofast -mfpu=vfp -mfloat-abi=hard  -march=armv6zk -mtune=arm1176jzf-s
++ARM_CPPFLAGS=${CXXFLAGS}
+ PATH=$PATH:$ARM_TOOLCHAIN_PATH
+-mkdir RaspBerryPi
+-cd RaspBerryPi/
+-../configure --host=$ARM_TOOLCHAIN --enable-platform=POSIX CPPFLAGS="$ARM_CPPFLAGS"
++./configure --host=$ARM_TOOLCHAIN --enable-platform=POSIX CPPFLAGS="$ARM_CPPFLAGS"
+ if [[ "$?" -eq "0" ]]; then
+ 	echo "Starting Make process"
