@@ -25,10 +25,7 @@ SRC_URI = "file://EnOceanLinkTrial_1_9_0_0.zip \
 
 S = "${WORKDIR}/EOLink"
 
-PACKAGES = "${PN} ${PN}-staticdev ${PN}-dev "
-
-RDEPENDS_${PN}-staticdev = ""
-RDEPENDS_${PN}-dev = ""
+PACKAGES = "${PN} ${PN}-staticdev ${PN}-dev"
 
 do_configure() {
    chmod 777 ./*.sh
@@ -54,5 +51,5 @@ do_install () {
 }
 
 FILES_${PN} += " \
-                ${libdir}/lib*.la\
+                ${libdir}/lib*.la \
 "
