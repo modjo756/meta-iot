@@ -48,6 +48,7 @@ do_install () {
     install -m 0644 Profiles/*.h ${D}${includedir}/${PN}/Profiles
     install -m 0644 Includes/*.h ${D}${includedir}/${PN}
     install -m 0644 eoLink.h ${D}${includedir}
+    install -m 0644 eoVersion.h ${D}${includedir}/${PN}
 }
 
 FILES_${PN} += " \
