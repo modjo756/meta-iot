@@ -3,7 +3,7 @@ SUMMARY ="enOcean recipe for yocto"
 DESCRIPTION = "enOcean allow to control device that use this protocole for home automation ..."
 
 AUTHOR = "modjo.buggy22@orange.fr"
- 
+
 DEPENDS = "\
     autoconf  \
     automake  \
@@ -27,6 +27,8 @@ S = "${WORKDIR}/EOLink"
 
 PACKAGES = "${PN} ${PN}-staticdev ${PN}-dev"
 
+ALLOW_EMPTY_${PN} = "1"
+
 do_configure() {
    chmod 777 ./*.sh
    chmod 777 ./configure
@@ -40,8 +42,8 @@ do_compile() {
 
 do_install () {
     install -d ${D}${libdir}
-    install -m 0644 libEOLink.a ${D}${libdir}
     install -m 0644 libEOLink.la ${D}${libdir}
+    install -m 0644 libEOLink.a ${D}${libdir}
     install -d ${D}${includedir}/${PN}/api
     install -m 0644 Includes/api/* ${D}${includedir}/${PN}/api
     install -d ${D}${includedir}/${PN}/Profiles
@@ -51,6 +53,6 @@ do_install () {
     install -m 0644 eoVersion.h ${D}${includedir}/${PN}
 }
 
-FILES_${PN} += " \
-                ${libdir}/lib*.la \
-"
+FILES_${PN} = "${libdir}/libEOLink.la"
+
+
